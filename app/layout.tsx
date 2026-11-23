@@ -32,7 +32,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${heading.variable} ${body.variable}`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-accent focus:px-5 focus:py-3 focus:font-semibold focus:text-accent-ink"
+        >
+          Skip to main content
+        </a>
+        {children}
+      </body>
     </html>
   )
 }

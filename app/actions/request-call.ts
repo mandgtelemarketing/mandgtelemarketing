@@ -8,6 +8,8 @@ import { CONTACT_EMAIL } from '@/lib/site'
 export type RequestCallState = {
   fieldErrors?: FieldErrors
   formError?: string
+  /** What the visitor typed, so a failed submit doesn't wipe the form. */
+  values?: ReturnType<typeof formDataToInput>
 }
 
 export async function requestCall(_prev: RequestCallState, formData: FormData): Promise<RequestCallState> {
@@ -15,15 +17,17 @@ export async function requestCall(_prev: RequestCallState, formData: FormData): 
   const trap = formData.get(HONEYPOT_FIELD)
   if (typeof trap === 'string' && trap.trim() !== '') redirect('/thank-you')
 
-  const parsed = contactSchema.safeParse(formDataToInput(formData))
+  const values = formDataToInput(formData)
+  const parsed = contactSchema.safeParse(values)
   if (!parsed.success) {
-    return { fieldErrors: toFieldErrors(parsed.error), formError: 'Check the highlighted fields.' }
+    return { fieldErrors: toFieldErrors(parsed.error), formError: 'Check the highlighted fields.', values }
   }
 
   const sent = await sendRequestEmails(parsed.data)
   if (!sent.ok) {
     return {
       formError: `We couldn't send your request just now. Email us at ${CONTACT_EMAIL} and we'll get right back to you.`,
+      values,
     }
   }
 

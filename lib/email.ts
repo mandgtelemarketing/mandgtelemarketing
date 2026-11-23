@@ -16,6 +16,11 @@ function config() {
   }
 }
 
+/** Header values must stay on one line, whatever a visitor posts. */
+function oneLine(s: string) {
+  return s.replace(/[\u0000-\u001f\u007f\u2028\u2029]+/g, ' ').trim()
+}
+
 /** Plain-text emails only, so nothing a visitor types can inject HTML. */
 export function notificationEmail(input: ContactInput, to: string): Mail {
   const spend = LEAD_SPEND.find((s) => s.value === input.spend)?.label
@@ -42,7 +47,7 @@ export function notificationEmail(input: ContactInput, to: string): Mail {
   return {
     to,
     replyTo: input.email,
-    subject: `Call request: ${input.name}, ${input.agency}`,
+    subject: oneLine(`Call request: ${input.name}, ${input.agency}`),
     text: lines.join('\n'),
   }
 }
@@ -82,14 +87,24 @@ export async function sendRequestEmails(input: ContactInput): Promise<SendResult
   }
 
   const resend = new Resend(cfg.apiKey)
-  const first = await resend.emails.send({ from: cfg.from, ...notify })
-  if (first.error) {
-    console.error('[contact] notification failed:', first.error)
+  try {
+    const first = await resend.emails.send({ from: cfg.from, ...notify })
+    if (first.error) {
+      console.error('[contact] notification failed:', first.error)
+      return { ok: false, reason: 'send_failed' }
+    }
+  } catch (err) {
+    // A network failure throws instead of returning { error }. Still show the visitor the fallback.
+    console.error('[contact] notification threw:', err)
     return { ok: false, reason: 'send_failed' }
   }
 
-  const second = await resend.emails.send({ from: cfg.from, ...confirm, replyTo: cfg.to })
-  if (second.error) console.error('[contact] confirmation failed:', second.error)
+  try {
+    const second = await resend.emails.send({ from: cfg.from, ...confirm, replyTo: cfg.to })
+    if (second.error) console.error('[contact] confirmation failed:', second.error)
+  } catch (err) {
+    console.error('[contact] confirmation threw:', err)
+  }
 
   return { ok: true }
 }

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ThankYou() {
   return (
-    <main className="flex min-h-dvh items-center justify-center px-4">
+    <main id="main" className="flex min-h-dvh items-center justify-center px-4">
       <div className="max-w-md rounded-[var(--radius)] border border-line bg-surface p-8 text-center">
         <div className="flex justify-center">
           <Logo size={56} />

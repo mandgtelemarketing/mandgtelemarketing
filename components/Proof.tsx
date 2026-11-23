@@ -6,10 +6,9 @@ export function Proof() {
     <Section className="border-y border-line bg-surface">
       <dl className="flex flex-wrap gap-x-14 gap-y-6">
         {PROOF_STATS.map((s) => (
-          <div key={s.label}>
-            <dt className="sr-only">{s.label}</dt>
+          <div key={s.label} className="flex flex-col-reverse">
+            <dt className="mt-1 text-muted">{s.label}</dt>
             <dd className="font-display text-4xl font-extrabold text-ink sm:text-5xl">{s.value}</dd>
-            <dd className="mt-1 text-muted">{s.label}</dd>
           </div>
         ))}
       </dl>

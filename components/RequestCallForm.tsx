@@ -7,7 +7,7 @@ import { LEAD_SPEND, LEAD_VENDORS, SEATS, US_STATES } from '@/lib/site'
 import { buttonClass } from './ui'
 
 const input =
-  'w-full rounded-lg border border-line bg-bg px-3.5 py-3 text-base text-ink placeholder:text-muted/60 focus:border-accent focus:outline-none aria-[invalid=true]:border-danger'
+  'w-full rounded-lg border border-line bg-bg px-3.5 py-3 text-base text-ink placeholder:text-muted/60 focus:border-accent aria-[invalid=true]:border-danger'
 
 function Field({
   id,
@@ -42,6 +42,11 @@ export function RequestCallForm() {
   const [state, formAction, pending] = useActionState<RequestCallState, FormData>(requestCall, {})
   const [clientErrors, setClientErrors] = useState<FieldErrors | null>(null)
   const errors = clientErrors ?? state.fieldErrors ?? {}
+  // React clears the form after every action. Re-seed it from what the visitor typed.
+  const values = {
+    name: '', email: '', phone: '', agency: '', state: '', vendors: [] as string[], vendorOther: '', spend: '', seats: '', notes: '',
+    ...state.values,
+  }
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     const parsed = contactSchema.safeParse(formDataToInput(new FormData(e.currentTarget)))
@@ -63,19 +68,19 @@ export function RequestCallForm() {
     <form action={formAction} onSubmit={onSubmit} noValidate className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="name" label="Your name" error={errors.name} required>
-          <input id="name" name="name" autoComplete="name" className={input} {...a11y('name')} />
+          <input id="name" aria-required="true" name="name" defaultValue={values.name} autoComplete="name" className={input} {...a11y('name')} />
         </Field>
         <Field id="agency" label="Agency name" error={errors.agency} required>
-          <input id="agency" name="agency" autoComplete="organization" className={input} {...a11y('agency')} />
+          <input id="agency" aria-required="true" name="agency" defaultValue={values.agency} autoComplete="organization" className={input} {...a11y('agency')} />
         </Field>
         <Field id="email" label="Work email" error={errors.email} required>
-          <input id="email" name="email" type="email" autoComplete="email" className={input} {...a11y('email')} />
+          <input id="email" aria-required="true" name="email" type="email" defaultValue={values.email} autoComplete="email" className={input} {...a11y('email')} />
         </Field>
         <Field id="phone" label="Phone" error={errors.phone} required>
-          <input id="phone" name="phone" type="tel" autoComplete="tel" className={input} {...a11y('phone')} />
+          <input id="phone" aria-required="true" name="phone" type="tel" defaultValue={values.phone} autoComplete="tel" className={input} {...a11y('phone')} />
         </Field>
         <Field id="state" label="State" error={errors.state}>
-          <select id="state" name="state" defaultValue="" className={input} {...a11y('state')}>
+          <select id="state" name="state" defaultValue={values.state ?? ''} className={input} {...a11y('state')}>
             <option value="">Select a state</option>
             {US_STATES.map((s) => (
               <option key={s} value={s}>
@@ -85,7 +90,7 @@ export function RequestCallForm() {
           </select>
         </Field>
         <Field id="spend" label="Monthly lead spend" error={errors.spend}>
-          <select id="spend" name="spend" defaultValue="" className={input} {...a11y('spend')}>
+          <select id="spend" name="spend" defaultValue={values.spend ?? ''} className={input} {...a11y('spend')}>
             <option value="">Select a range</option>
             {LEAD_SPEND.map((s) => (
               <option key={s.value} value={s.value}>
@@ -102,9 +107,15 @@ export function RequestCallForm() {
           {LEAD_VENDORS.map((v) => (
             <label
               key={v}
-              className="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2 has-[:checked]:border-accent has-[:checked]:text-accent"
+              className="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2 has-[:checked]:border-accent has-[:checked]:text-accent has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
             >
-              <input type="checkbox" name="vendors" value={v} className="accent-[var(--accent)]" />
+              <input
+                type="checkbox"
+                name="vendors"
+                value={v}
+                defaultChecked={values.vendors.includes(v)}
+                className="accent-[var(--accent)]"
+              />
               {v}
             </label>
           ))}
@@ -112,6 +123,7 @@ export function RequestCallForm() {
         <input
           id="vendorOther"
           name="vendorOther"
+          defaultValue={values.vendorOther ?? ''}
           aria-label="Other lead vendors"
           placeholder="Other vendors (optional)"
           className={`${input} mt-3`}
@@ -124,9 +136,9 @@ export function RequestCallForm() {
           {SEATS.map((s) => (
             <label
               key={s}
-              className="flex min-h-11 min-w-16 cursor-pointer items-center justify-center rounded-full border border-line px-4 py-2 has-[:checked]:border-accent has-[:checked]:text-accent"
+              className="flex min-h-11 min-w-16 cursor-pointer items-center justify-center rounded-full border border-line px-4 py-2 has-[:checked]:border-accent has-[:checked]:text-accent has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
             >
-              <input type="radio" name="seats" value={s} className="sr-only" />
+              <input type="radio" name="seats" value={s} defaultChecked={values.seats === s} className="sr-only" />
               {s}
             </label>
           ))}
@@ -134,7 +146,7 @@ export function RequestCallForm() {
       </fieldset>
 
       <Field id="notes" label="Anything we should know?" error={errors.notes}>
-        <textarea id="notes" name="notes" rows={4} className={input} {...a11y('notes')} />
+        <textarea id="notes" name="notes" rows={4} defaultValue={values.notes ?? ''} className={input} {...a11y('notes')} />
       </Field>
 
       {/* Honeypot: hidden from people and screen readers. */}

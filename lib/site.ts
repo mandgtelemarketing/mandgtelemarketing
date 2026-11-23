@@ -97,7 +97,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'What states do you work in?',
-    a: 'We work with agencies across the U.S. and set your states, call windows and guidelines during onboarding.',
+    a: "Tell us where you write business. We'll confirm we can cover it and set your states, call windows and guidelines during onboarding.",
   },
   {
     q: 'How do you handle compliance?',

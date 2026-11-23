@@ -59,5 +59,5 @@ export function toFieldErrors(error: z.ZodError): FieldErrors {
   return out
 }
 
-/** Hidden field. People never fill it; bots usually do. */
-export const HONEYPOT_FIELD = 'website'
+/** Hidden field. People never fill it; bots usually do. Not named like a real field ("website", "url"), so browser autofill leaves it alone. */
+export const HONEYPOT_FIELD = 'contact_ref'
