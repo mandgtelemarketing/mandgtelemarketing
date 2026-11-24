@@ -30,7 +30,7 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-14">
             <SectionHeading
               kicker="Request a call"
-              title="Talk to Gino or Matt."
+              title="Talk to Matt or Gino."
               intro="Tell us a little about your agency. We'll reach out to set up a time that works for you."
               className="lg:sticky lg:top-28 lg:self-start"
             />

@@ -60,7 +60,7 @@ export function confirmationEmail(input: ContactInput): Mail {
     text: [
       `Hi ${first},`,
       '',
-      'Thanks. Gino or Matt will reach out to set up a time.',
+      'Thanks. Matt or Gino will reach out to set up a time.',
       '',
       'M&G Telemarketing',
       'https://mandgtelemarketingllc.com',

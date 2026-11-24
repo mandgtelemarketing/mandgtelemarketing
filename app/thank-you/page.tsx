@@ -17,7 +17,7 @@ export default function ThankYou() {
         </div>
         <h1 className="mt-6 text-5xl">Thanks. We got it.</h1>
         <p className="mt-4 text-ivory-muted">
-          Gino or Matt will reach out to set up a time. Check your inbox for a confirmation.
+          Matt or Gino will reach out to set up a time. Check your inbox for a confirmation.
         </p>
         <ButtonLink href="/" variant="secondary" className="mt-7">
           Back to the site

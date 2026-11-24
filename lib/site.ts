@@ -15,7 +15,7 @@ export const CONTACT_EMAIL = 'mandgtelemarketing@gmail.com'
 export const SHOW_PORTAL_SECTION = false
 
 /**
- * Founders video: a 16:9 talking head of Gino and Matt, 60 to 90 seconds.
+ * Founders video: a 16:9 talking head of Matt and Gino, 60 to 90 seconds.
  * Leave null to show the "coming soon" placeholder. Set src to an MP4 in /public
  * (for example '/founders.mp4') or a hosted MP4 URL, plus an optional poster image.
  */
@@ -34,7 +34,6 @@ export const NAV_LINKS = [
 ] as const
 
 export const PROOF_STATS = [
-  { value: '53', label: 'telemarketers' },
   { value: 'Since 2024', label: 'run by agency owners' },
 ] as const
 
@@ -78,11 +77,11 @@ export const PROBLEMS = [
 export const STEPS = [
   {
     title: 'Onboard',
-    body: 'We agree on states, scripts, call windows and lead sources.',
+    body: 'Account creation, lead vendor integration and dialer setup.',
   },
   {
     title: 'We dial',
-    body: 'Your leads load into the dialer and get worked in structured daily blocks.',
+    body: 'Your leads load into the dialer and get worked in a structured cadence.',
   },
   {
     title: 'Warm transfer',
@@ -102,7 +101,7 @@ export type Faq = { q: string; a: string | null }
 /** An answer of null hides the question until M&G supply it. */
 export const FAQS: Faq[] = [
   {
-    q: 'Do you provide the leads?',
+    q: 'Does M&G provide the leads?',
     a: 'No. You choose the lead vendors and own those contracts and the data. We can share what we see working across agencies.',
   },
   {
@@ -111,7 +110,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'How do you handle compliance?',
-    a: 'You are responsible for TCPA and DNC compliance for your leads and vendors. We follow your scripts and standards and honor every do-not-call request.',
+    a: 'You are responsible for TCPA and DNC compliance for your leads and vendors. We follow proven scripting and standards and honor every do-not-call request.',
   },
   {
     q: 'Is there a long-term contract?',
@@ -119,11 +118,11 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'How fast can we start?',
-    a: null, // M&G to supply the typical onboarding time.
+    a: 'Typically 5 to 7 business days from signing to dialing.',
   },
   {
-    q: 'Which dialer do you use?',
-    a: 'Ricochet. Your leads load into it and your team works them there.',
+    q: 'Who calls my leads?',
+    a: 'You get a dedicated telemarketer assigned to your account.',
   },
   {
     q: 'What do you need from us?',
@@ -131,7 +130,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'Can I add or remove telemarketers?',
-    a: null, // M&G to supply the policy.
+    a: 'Usually on your contract date, since contracts run month to month. Other timing is handled case by case, and adding a telemarketer mid-month is prorated.',
   },
 ]
 

@@ -110,7 +110,7 @@ export function Responsibility() {
       <div className="grid gap-6 md:grid-cols-2">
         {[
           { who: 'You', body: 'Own your lead vendors and data, and TCPA and DNC compliance for those leads.' },
-          { who: 'We', body: 'Follow your scripts and standards and honor every do-not-call request.' },
+          { who: 'We', body: 'Follow proven scripting and standards and honor every do-not-call request.' },
         ].map((r, i) => (
           <div key={r.who} className="panel-inset rounded-[10px] p-7 sm:p-9" data-reveal style={{ transitionDelay: `${i * 90}ms` }}>
             <p className="ivory plate-label inline-block rounded-[2px] px-3 py-1.5">{r.who}</p>

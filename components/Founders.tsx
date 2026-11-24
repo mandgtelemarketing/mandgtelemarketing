@@ -34,14 +34,14 @@ function Monitor() {
               </span>
               <p className="plate-label relative text-amber">Founders video coming soon</p>
               <p className="relative max-w-sm text-sm text-muted">
-                Gino and Matt on why they built M&amp;G and who it&apos;s for.
+                Matt and Gino on why they built M&amp;G and who it&apos;s for.
               </p>
             </div>
           )}
         </div>
       </div>
       <div className="mt-3 flex items-center justify-between px-2">
-        <span className="plate-label text-[0.7rem] text-[#c9d3e0]/80">Gino and Matt</span>
+        <span className="plate-label text-[0.7rem] text-[#c9d3e0]/80">Matt and Gino</span>
         <span className="flex gap-2" aria-hidden="true">
           <span className="lamp" data-on={FOUNDERS_VIDEO ? 'green' : 'amber'} />
           <span className="lamp" />
@@ -66,7 +66,7 @@ export function Founders() {
           <p className="mt-6 text-lg text-muted">{ORIGIN_STORY.split('. ').slice(1).join('. ')}</p>
           <figcaption className="mt-6 flex items-center gap-3">
             <span className="h-px w-10 bg-brass" aria-hidden="true" />
-            <span className="font-semibold">Gino and Matt</span>
+            <span className="font-semibold">Matt and Gino</span>
             <span className="text-muted">Agency owners and founders</span>
           </figcaption>
         </figure>
