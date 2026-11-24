@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 export default function ThankYou() {
   return (
     <main id="main" className="flex min-h-dvh items-center justify-center px-4">
-      <div className="max-w-md rounded-[var(--radius)] border border-line bg-surface p-8 text-center">
+      <div className="ivory screws max-w-md rounded-[6px] px-8 pb-9 pt-10 text-center">
         <div className="flex justify-center">
           <Logo size={56} />
         </div>
-        <h1 className="mt-6 text-3xl font-extrabold">Thanks. We got it.</h1>
-        <p className="mt-3 text-muted">
+        <h1 className="mt-6 text-5xl">Thanks. We got it.</h1>
+        <p className="mt-4 text-ivory-muted">
           Gino or Matt will reach out to set up a time. Check your inbox for a confirmation.
         </p>
         <ButtonLink href="/" variant="secondary" className="mt-7">

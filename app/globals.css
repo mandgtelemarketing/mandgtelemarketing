@@ -1,38 +1,65 @@
 @import 'tailwindcss';
 
-/* Design tokens. Dark theme with the blue accent existing clients know. */
+/*
+  The Switchboard. See DESIGN.md.
+  Panel black ground, oak rails, brass plates, ivory strips, lamps that carry state.
+*/
 :root {
-  --bg: #07080b;
-  --surface: #0f1218;
-  --surface-2: #151922;
-  --border: #252a36;
-  --text: #f4f6fa;
-  --muted: #a6adbd;
-  --accent: #17c3ff;
-  --accent-hover: #4dd2ff;
-  --accent-ink: #03141c;
-  --danger: #ff6b8a;
-  --radius: 14px;
+  --panel: #141311;
+  --panel-raised: #1f1d19;
+  --panel-line: #34302a;
+  --oak: #5e361a;
+  --oak-light: #8f5a2e;
+  --ivory: #eee5cd;
+  --ivory-ink: #22201b;
+  --ivory-muted: #5c5546;
+  --ink: #f4efe4;
+  --ink-muted: #bdb4a2;
+  --brass: #c9a14b;
+  --brass-light: #e6c677;
+  --brass-deep: #86662a;
+  --lamp-amber: #ffb43a;
+  --lamp-amber-hot: #ffc861;
+  --lamp-green: #4fd682;
+  --lamp-red: #ff5a3c;
+  --cord-red: #b5342a;
+  --cord-green: #2f7f4c;
+  --danger: #ff8a73;
   color-scheme: dark;
 }
 
 @theme inline {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-line: var(--border);
-  --color-ink: var(--text);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-ink: var(--accent-ink);
+  /* Legacy names the form still uses, mapped onto the switchboard. */
+  --color-bg: var(--panel);
+  --color-surface: var(--panel-raised);
+  --color-surface-2: #282520;
+  --color-line: var(--panel-line);
+  --color-muted: var(--ink-muted);
+  --color-accent: var(--lamp-amber);
+  --color-accent-hover: var(--lamp-amber-hot);
+  --color-accent-ink: var(--ivory-ink);
   --color-danger: var(--danger);
+
+  --color-panel: var(--panel);
+  --color-panel-raised: var(--panel-raised);
+  --color-oak: var(--oak);
+  --color-ivory: var(--ivory);
+  --color-ivory-ink: var(--ivory-ink);
+  --color-ivory-muted: var(--ivory-muted);
+  --color-ink: var(--ink);
+  --color-brass: var(--brass);
+  --color-brass-light: var(--brass-light);
+  --color-brass-deep: var(--brass-deep);
+  --color-amber: var(--lamp-amber);
+  --color-green: var(--lamp-green);
+  --color-red: var(--lamp-red);
+
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), Impact, ui-sans-serif, sans-serif;
 }
 
 html {
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -42,9 +69,13 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-size: 1rem;
+  background-color: var(--panel);
+  /* Crackle finish: fine noise plus a slow vignette, so the black reads as a material. */
+  background-image:
+    radial-gradient(120% 80% at 50% 0%, rgb(255 230 180 / 0.05), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--ink);
+  font-size: 1.0625rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -53,20 +84,268 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -0.005em;
+  line-height: 0.95;
   text-wrap: balance;
+  text-transform: uppercase;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--lamp-amber);
   outline-offset: 3px;
 }
 
-/* Mobile menu uses <details>; hide the default marker. */
 summary::-webkit-details-marker {
   display: none;
 }
 summary {
   list-style: none;
+}
+
+/* ---------- Materials ---------- */
+
+/* Oak cabinet rail between sections. */
+.rail {
+  height: 18px;
+  background:
+    repeating-linear-gradient(90deg, rgb(0 0 0 / 0.12) 0 2px, transparent 2px 9px, rgb(255 255 255 / 0.04) 9px 10px, transparent 10px 23px),
+    linear-gradient(180deg, var(--oak-light), var(--oak) 55%, #3b210f);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.12) inset, 0 6px 14px rgb(0 0 0 / 0.5);
+}
+
+/* Inset bakelite panel. */
+.panel-inset {
+  background: linear-gradient(180deg, #1a1916, #12110f);
+  border: 1px solid #2c2924;
+  box-shadow:
+    inset 0 2px 6px rgb(0 0 0 / 0.65),
+    inset 0 -1px 0 rgb(255 255 255 / 0.04);
+}
+
+/* Brushed brass plate. */
+.brass {
+  color: var(--ivory-ink);
+  background:
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.06) 0 1px, transparent 1px 3px),
+    linear-gradient(160deg, var(--brass-light), var(--brass) 45%, var(--brass-deep));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    inset 0 -2px 0 rgb(0 0 0 / 0.2),
+    0 10px 24px rgb(0 0 0 / 0.45);
+}
+
+/* Screw heads in a plate's corners. */
+.screws {
+  position: relative;
+}
+.screws::before,
+.screws::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background:
+    linear-gradient(45deg, transparent 42%, rgb(0 0 0 / 0.45) 42% 58%, transparent 58%),
+    radial-gradient(circle at 35% 35%, #f3dc9c, #7a5c22);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.4);
+}
+.screws::before {
+  left: 10px;
+}
+.screws::after {
+  right: 10px;
+}
+
+/* Ivory designation strip or card. */
+.ivory {
+  color: var(--ivory-ink);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.35), transparent 30%),
+    var(--ivory);
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.08),
+    0 1px 0 rgb(255 255 255 / 0.5) inset,
+    0 12px 28px rgb(0 0 0 / 0.45);
+}
+
+/* Engraved plate label. */
+.plate-label {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Lamp cap. */
+.lamp {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #4a463e, #1a1916 70%);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.8), 0 0 0 2px #2b2823;
+  flex-shrink: 0;
+}
+.lamp[data-on='amber'] {
+  background: radial-gradient(circle at 35% 30%, #fff3d0, var(--lamp-amber) 45%, #a35d00);
+  box-shadow: 0 0 0 2px #2b2823, 0 0 14px 3px rgb(255 180 58 / 0.55);
+}
+.lamp[data-on='green'] {
+  background: radial-gradient(circle at 35% 30%, #e6ffef, var(--lamp-green) 45%, #16703a);
+  box-shadow: 0 0 0 2px #2b2823, 0 0 14px 3px rgb(79 214 130 / 0.5);
+}
+
+/* Keys (buttons). */
+.key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 2.875rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.975rem;
+  transition:
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 160ms;
+}
+.key:active {
+  transform: translateY(2px);
+}
+.key-primary {
+  color: var(--ivory-ink);
+  background: linear-gradient(180deg, var(--lamp-amber-hot), var(--lamp-amber) 60%, #e89a1c);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    0 4px 0 #8a5404,
+    0 10px 26px rgb(255 160 40 / 0.28);
+}
+.key-primary:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    0 4px 0 #8a5404,
+    0 12px 34px rgb(255 160 40 / 0.45);
+}
+.key-primary:active {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.4),
+    0 2px 0 #8a5404,
+    0 6px 16px rgb(255 160 40 / 0.3);
+}
+.key-secondary {
+  color: var(--ink);
+  background: linear-gradient(180deg, #2a2722, #1b1916);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 0 0 1px var(--brass-deep),
+    0 4px 0 #0b0a09;
+}
+.key-secondary:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 0 0 1px var(--brass),
+    0 4px 0 #0b0a09;
+}
+.key:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Reveal on scroll: visible by default, enhanced only when JS marks the page ready. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js [data-reveal][data-shown] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Waiting lead lamp. */
+@media (prefers-reduced-motion: no-preference) {
+  .sb-blink {
+    animation: sb-blink 0.9s steps(2, jump-none) infinite;
+  }
+}
+@keyframes sb-blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* How it works: one braided cord patches the four steps together. */
+.patch-cord {
+  position: absolute;
+  z-index: 0;
+  border-radius: 99px;
+  background:
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.18) 0 3px, transparent 3px 7px),
+    var(--cord-red);
+  box-shadow: 0 0 0 1.5px #0a0908, 0 6px 10px rgb(0 0 0 / 0.5);
+  /* Phones: down the left edge, through each jack. */
+  left: calc(0.75rem + 1.25rem + 22px - 2.5px);
+  top: 3.5rem;
+  bottom: 3.5rem;
+  width: 5px;
+  background:
+    repeating-linear-gradient(0deg, rgb(255 255 255 / 0.18) 0 3px, transparent 3px 7px),
+    var(--cord-red);
+  transform-origin: top;
+}
+@media (min-width: 768px) {
+  .patch-cord {
+    left: calc(0.75rem + 1.5rem + 22px);
+    right: calc(25% - 0.75rem);
+    top: calc(0.75rem + 2rem + 22px - 2.5px);
+    bottom: auto;
+    width: auto;
+    height: 5px;
+    background:
+      repeating-linear-gradient(90deg, rgb(255 255 255 / 0.18) 0 3px, transparent 3px 7px),
+      var(--cord-red);
+    transform-origin: left;
+  }
+}
+.patch-row li {
+  z-index: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .patch-row .patch-cord {
+    transform: scaleY(0);
+    transition: transform 1500ms cubic-bezier(0.65, 0, 0.35, 1) 250ms;
+  }
+  @media (min-width: 768px) {
+    .js .patch-row .patch-cord {
+      transform: scaleX(0);
+    }
+  }
+  .js .patch-row[data-shown] .patch-cord {
+    transform: none;
+  }
+  .patch-row .patch-lamp {
+    transition: background 300ms, box-shadow 300ms;
+  }
+}
+.patch-row:not(.js *) .patch-lamp,
+.patch-row[data-shown] .patch-lamp {
+  background: radial-gradient(circle at 35% 30%, #e6ffef, var(--lamp-green) 45%, #16703a);
+  box-shadow: 0 0 0 2px #2b2823, 0 0 14px 3px rgb(79 214 130 / 0.5);
+}
+
+/* FAQ: the lamp lights when a question is open. */
+.faq[open] .faq-lamp {
+  background: radial-gradient(circle at 35% 30%, #fff3d0, var(--lamp-amber) 45%, #a35d00);
+  box-shadow: 0 0 0 2px #2b2823, 0 0 14px 3px rgb(255 180 58 / 0.55);
 }

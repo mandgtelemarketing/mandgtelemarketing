@@ -14,6 +14,16 @@ export const CONTACT_EMAIL = 'mandgtelemarketing@gmail.com'
  */
 export const SHOW_PORTAL_SECTION = false
 
+/**
+ * Founders video: a 16:9 talking head of Gino and Matt, 60 to 90 seconds.
+ * Leave null to show the "coming soon" placeholder. Set src to an MP4 in /public
+ * (for example '/founders.mp4') or a hosted MP4 URL, plus an optional poster image.
+ */
+export const FOUNDERS_VIDEO: { src: string; poster?: string } | null = null
+
+export const ORIGIN_STORY =
+  'We created M&G Telemarketing after the rising cost of buying live call transfers became unsustainable for our own agencies. We wanted a more cost-effective, reliable way to generate our own live transfers, get more out of our lead spend, and focus on long-term growth. What started as a solution for our agencies became a way to help other agents do the same.'
+
 export const PRICE_STANDARD = '$2,000'
 export const PRICE_VOLUME = '$1,900'
 

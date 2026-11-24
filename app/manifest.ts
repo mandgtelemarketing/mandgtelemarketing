@@ -6,8 +6,8 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: 'M&G',
     start_url: '/',
     display: 'browser',
-    background_color: '#07080b',
-    theme_color: '#07080b',
+    background_color: '#141311',
+    theme_color: '#141311',
     icons: [{ src: '/icon.png', sizes: '192x192', type: 'image/png' }],
   }
 }

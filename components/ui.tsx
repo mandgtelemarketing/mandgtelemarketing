@@ -2,23 +2,27 @@ import type { ComponentProps, ReactNode } from 'react'
 
 type Variant = 'primary' | 'secondary'
 
-const base =
-  'inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[0.95rem] font-semibold transition-colors min-h-11'
-const variants: Record<Variant, string> = {
-  primary: 'bg-accent text-accent-ink hover:bg-accent-hover',
-  secondary: 'border border-line text-ink hover:border-muted',
+/** A switchboard key. The primary key carries a lit amber lamp. */
+export function buttonClass(variant: Variant = 'primary', className = '') {
+  return `key ${variant === 'primary' ? 'key-primary' : 'key-secondary'} ${className}`
 }
 
 export function ButtonLink({
   variant = 'primary',
   className = '',
+  children,
   ...props
 }: ComponentProps<'a'> & { variant?: Variant }) {
-  return <a className={`${base} ${variants[variant]} ${className}`} {...props} />
+  return (
+    <a className={buttonClass(variant, className)} {...props}>
+      {children}
+    </a>
+  )
 }
 
-export function buttonClass(variant: Variant = 'primary', className = '') {
-  return `${base} ${variants[variant]} ${className}`
+/** Oak cabinet rail between sections. */
+export function Rail() {
+  return <div className="rail" aria-hidden="true" />
 }
 
 export function Section({
@@ -31,18 +35,29 @@ export function Section({
   children: ReactNode
 }) {
   return (
-    <section id={id} className={`px-4 py-16 sm:px-6 sm:py-24 ${className}`}>
+    <section id={id} className={`px-4 py-20 sm:px-6 sm:py-28 ${className}`}>
       <div className="mx-auto max-w-6xl">{children}</div>
     </section>
   )
 }
 
-export function SectionHeading({ kicker, title, intro }: { kicker: string; title: string; intro?: string }) {
+/** Brass designation plate over a heavy condensed heading. */
+export function SectionHeading({
+  kicker,
+  title,
+  intro,
+  className = '',
+}: {
+  kicker: string
+  title: string
+  intro?: string
+  className?: string
+}) {
   return (
-    <div className="mb-10 max-w-2xl">
-      <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-accent">{kicker}</p>
-      <h2 className="text-3xl font-extrabold sm:text-4xl">{title}</h2>
-      {intro && <p className="mt-4 text-lg text-muted">{intro}</p>}
+    <div className={`mb-12 max-w-3xl ${className}`} data-reveal>
+      <p className="plate-label brass inline-block rounded-[4px] px-3 py-2">{kicker}</p>
+      <h2 className="mt-6 text-[clamp(2.5rem,6vw,4.5rem)]">{title}</h2>
+      {intro && <p className="mt-5 max-w-2xl text-lg text-muted">{intro}</p>}
     </div>
   )
 }

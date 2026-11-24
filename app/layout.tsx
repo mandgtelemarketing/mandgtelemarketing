@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Archivo, Inter } from 'next/font/google'
+import { Big_Shoulders, Libre_Franklin } from 'next/font/google'
 import { SITE_URL } from '@/lib/site'
 import './globals.css'
 
-const heading = Archivo({ subsets: ['latin'], weight: ['700', '800'], variable: '--font-heading', display: 'swap' })
-const body = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' })
+// Big Shoulders: heavy condensed, echoing the logo's "M&G". Libre Franklin for reading.
+const heading = Big_Shoulders({ subsets: ['latin'], weight: 'variable', axes: ['opsz'], variable: '--font-heading', display: 'swap' })
+const body = Libre_Franklin({ subsets: ['latin'], variable: '--font-body', display: 'swap' })
 
 const title = 'M&G Telemarketing | Telemarketing for Allstate Agencies'
 const description =
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#07080b',
+  themeColor: '#141311',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
