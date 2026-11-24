@@ -19,7 +19,7 @@ export async function renderOg() {
           flexDirection: 'column',
           justifyContent: 'center',
           padding: 80,
-          background: '#141311',
+          background: '#07090d',
           color: '#f4f6fa',
           fontFamily: 'sans-serif',
         }}
@@ -33,7 +33,7 @@ export async function renderOg() {
         <div style={{ marginTop: 48, fontSize: 64, fontWeight: 800, lineHeight: 1.1, maxWidth: 980 }}>
           Make your own live transfers. With a team built by agents.
         </div>
-        <div style={{ marginTop: 32, fontSize: 30, color: '#ffb43a' }}>$2,000 per telemarketer per month. Month-to-month.</div>
+        <div style={{ marginTop: 32, fontSize: 30, color: '#17c3ff' }}>$2,000 per telemarketer per month. Month-to-month.</div>
       </div>
     ),
     ogSize,

@@ -29,7 +29,7 @@ export function HowItWorks() {
         {STEPS.map((s, i) => (
           <li key={s.title} className="relative px-5 py-7 md:px-6 md:py-8">
             <div className="flex items-center gap-4">
-              <span className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[radial-gradient(circle_at_38%_32%,#f6e2a6,#c9a14b_55%,#6e5320)] shadow-[0_3px_8px_rgb(0_0_0/0.6)]">
+              <span className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[radial-gradient(circle_at_38%_32%,#f2f6fb,#aeb8c7_55%,#555f70)] shadow-[0_3px_8px_rgb(0_0_0/0.6)]">
                 <span className="h-4 w-4 rounded-full bg-black" />
               </span>
               <span className="patch-lamp lamp" style={{ transitionDelay: `${500 + i * 350}ms` }} aria-hidden="true" />
@@ -64,11 +64,11 @@ export function PortalPreview() {
 function RatePlate({ tier, price, note }: { tier: string; price: string; note?: string }) {
   return (
     <div className="brass screws flex flex-col rounded-[6px] px-7 pb-8 pt-10 sm:px-10" data-reveal>
-      <p className="plate-label text-[#3b2f17]">{tier}</p>
+      <p className="plate-label text-[#233044]">{tier}</p>
       <p className="mt-4 font-display text-[clamp(4rem,9vw,6rem)] font-black leading-none [text-shadow:0_1px_0_rgb(255_255_255/0.45),0_-1px_0_rgb(0_0_0/0.25)]">
         {price}
       </p>
-      <p className="mt-2 font-semibold text-[#3b2f17]">per telemarketer, per month</p>
+      <p className="mt-2 font-semibold text-[#233044]">per telemarketer, per month</p>
       {note && (
         <p className="mt-6 flex items-center gap-2.5 border-t border-black/15 pt-5 font-semibold">
           <span className="lamp" data-on="green" aria-hidden="true" />

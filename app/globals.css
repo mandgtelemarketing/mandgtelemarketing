@@ -5,26 +5,26 @@
   Panel black ground, oak rails, brass plates, ivory strips, lamps that carry state.
 */
 :root {
-  --panel: #141311;
-  --panel-raised: #1f1d19;
-  --panel-line: #34302a;
-  --oak: #5e361a;
-  --oak-light: #8f5a2e;
-  --ivory: #eee5cd;
-  --ivory-ink: #22201b;
-  --ivory-muted: #5c5546;
-  --ink: #f4efe4;
-  --ink-muted: #bdb4a2;
-  --brass: #c9a14b;
-  --brass-light: #e6c677;
-  --brass-deep: #86662a;
-  --lamp-amber: #ffb43a;
-  --lamp-amber-hot: #ffc861;
-  --lamp-green: #4fd682;
-  --lamp-red: #ff5a3c;
-  --cord-red: #b5342a;
-  --cord-green: #2f7f4c;
-  --danger: #ff8a73;
+  --panel: #07090d;
+  --panel-raised: #111318;
+  --panel-line: #272a35;
+  --oak: #0f2440;
+  --oak-light: #1d3f68;
+  --ivory: #eef3f8;
+  --ivory-ink: #0b1220;
+  --ivory-muted: #4d5a6e;
+  --ink: #f9fafb;
+  --ink-muted: #a0a4b8;
+  --brass: #aeb8c7;
+  --brass-light: #e3e9f2;
+  --brass-deep: #6b7689;
+  --lamp-amber: #17c3ff;
+  --lamp-amber-hot: #4dd2ff;
+  --lamp-green: #17c3ff;
+  --lamp-red: #ff3366;
+  --cord-red: #1aa7dc;
+  --cord-green: #d62d5a;
+  --danger: #ff6b8a;
   color-scheme: dark;
 }
 
@@ -32,7 +32,7 @@
   /* Legacy names the form still uses, mapped onto the switchboard. */
   --color-bg: var(--panel);
   --color-surface: var(--panel-raised);
-  --color-surface-2: #282520;
+  --color-surface-2: #1a1d25;
   --color-line: var(--panel-line);
   --color-muted: var(--ink-muted);
   --color-accent: var(--lamp-amber);
@@ -72,7 +72,7 @@ body {
   background-color: var(--panel);
   /* Crackle finish: fine noise plus a slow vignette, so the black reads as a material. */
   background-image:
-    radial-gradient(120% 80% at 50% 0%, rgb(255 230 180 / 0.05), transparent 60%),
+    radial-gradient(120% 80% at 50% 0%, rgb(23 195 255 / 0.05), transparent 60%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   color: var(--ink);
   font-size: 1.0625rem;
@@ -110,14 +110,14 @@ summary {
   height: 18px;
   background:
     repeating-linear-gradient(90deg, rgb(0 0 0 / 0.12) 0 2px, transparent 2px 9px, rgb(255 255 255 / 0.04) 9px 10px, transparent 10px 23px),
-    linear-gradient(180deg, var(--oak-light), var(--oak) 55%, #3b210f);
+    linear-gradient(180deg, var(--oak-light), var(--oak) 55%, #071426);
   box-shadow: 0 1px 0 rgb(255 255 255 / 0.12) inset, 0 6px 14px rgb(0 0 0 / 0.5);
 }
 
 /* Inset bakelite panel. */
 .panel-inset {
-  background: linear-gradient(180deg, #1a1916, #12110f);
-  border: 1px solid #2c2924;
+  background: linear-gradient(180deg, #0d1016, #08090d);
+  border: 1px solid #232733;
   box-shadow:
     inset 0 2px 6px rgb(0 0 0 / 0.65),
     inset 0 -1px 0 rgb(255 255 255 / 0.04);
@@ -149,7 +149,7 @@ summary {
   border-radius: 50%;
   background:
     linear-gradient(45deg, transparent 42%, rgb(0 0 0 / 0.45) 42% 58%, transparent 58%),
-    radial-gradient(circle at 35% 35%, #f3dc9c, #7a5c22);
+    radial-gradient(circle at 35% 35%, #f4f7fb, #5a6578);
   box-shadow: 0 1px 1px rgb(0 0 0 / 0.4);
 }
 .screws::before {
@@ -187,17 +187,17 @@ summary {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #4a463e, #1a1916 70%);
-  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.8), 0 0 0 2px #2b2823;
+  background: radial-gradient(circle at 35% 30%, #3a4150, #0d1016 70%);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.8), 0 0 0 2px #20242e;
   flex-shrink: 0;
 }
 .lamp[data-on='amber'] {
-  background: radial-gradient(circle at 35% 30%, #fff3d0, var(--lamp-amber) 45%, #a35d00);
-  box-shadow: 0 0 0 2px #2b2823, 0 0 14px 3px rgb(255 180 58 / 0.55);
+  background: radial-gradient(circle at 35% 30%, #ffe3ea, var(--lamp-red) 45%, #99173b);
+  box-shadow: 0 0 0 2px #20242e, 0 0 14px 3px rgb(255 51 102 / 0.5);
 }
 .lamp[data-on='green'] {
-  background: radial-gradient(circle at 35% 30%, #e6ffef, var(--lamp-green) 45%, #16703a);
-  box-shadow: 0 0 0 2px #2b2823, 0 0 14px 3px rgb(79 214 130 / 0.5);
+  background: radial-gradient(circle at 35% 30%, #e6f8ff, var(--lamp-green) 45%, #0a6f99);
+  box-shadow: 0 0 0 2px #20242e, 0 0 14px 3px rgb(23 195 255 / 0.5);
 }
 
 /* Keys (buttons). */
@@ -221,37 +221,37 @@ summary {
 }
 .key-primary {
   color: var(--ivory-ink);
-  background: linear-gradient(180deg, var(--lamp-amber-hot), var(--lamp-amber) 60%, #e89a1c);
+  background: linear-gradient(180deg, var(--lamp-amber-hot), var(--lamp-amber) 60%, #0aa6e0);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.55),
-    0 4px 0 #8a5404,
-    0 10px 26px rgb(255 160 40 / 0.28);
+    0 4px 0 #05628a,
+    0 10px 26px rgb(23 195 255 / 0.28);
 }
 .key-primary:hover {
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.55),
-    0 4px 0 #8a5404,
-    0 12px 34px rgb(255 160 40 / 0.45);
+    0 4px 0 #05628a,
+    0 12px 34px rgb(23 195 255 / 0.45);
 }
 .key-primary:active {
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.4),
-    0 2px 0 #8a5404,
-    0 6px 16px rgb(255 160 40 / 0.3);
+    0 2px 0 #05628a,
+    0 6px 16px rgb(23 195 255 / 0.3);
 }
 .key-secondary {
   color: var(--ink);
-  background: linear-gradient(180deg, #2a2722, #1b1916);
+  background: linear-gradient(180deg, #1b1f28, #11141b);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.08),
     0 0 0 1px var(--brass-deep),
-    0 4px 0 #0b0a09;
+    0 4px 0 #020305;
 }
 .key-secondary:hover {
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.08),
     0 0 0 1px var(--brass),
-    0 4px 0 #0b0a09;
+    0 4px 0 #020305;
 }
 .key:disabled {
   opacity: 0.6;
@@ -293,7 +293,7 @@ summary {
   background:
     repeating-linear-gradient(90deg, rgb(255 255 255 / 0.18) 0 3px, transparent 3px 7px),
     var(--cord-red);
-  box-shadow: 0 0 0 1.5px #0a0908, 0 6px 10px rgb(0 0 0 / 0.5);
+  box-shadow: 0 0 0 1.5px #04060a, 0 6px 10px rgb(0 0 0 / 0.5);
   /* Phones: down the left edge, through each jack. */
   left: calc(0.75rem + 1.25rem + 22px - 2.5px);
   top: 3.5rem;
@@ -340,12 +340,12 @@ summary {
 }
 .patch-row:not(.js *) .patch-lamp,
 .patch-row[data-shown] .patch-lamp {
-  background: radial-gradient(circle at 35% 30%, #e6ffef, var(--lamp-green) 45%, #16703a);
-  box-shadow: 0 0 0 2px #2b2823, 0 0 14px 3px rgb(79 214 130 / 0.5);
+  background: radial-gradient(circle at 35% 30%, #e6f8ff, var(--lamp-green) 45%, #0a6f99);
+  box-shadow: 0 0 0 2px #20242e, 0 0 14px 3px rgb(23 195 255 / 0.5);
 }
 
 /* FAQ: the lamp lights when a question is open. */
 .faq[open] .faq-lamp {
-  background: radial-gradient(circle at 35% 30%, #fff3d0, var(--lamp-amber) 45%, #a35d00);
-  box-shadow: 0 0 0 2px #2b2823, 0 0 14px 3px rgb(255 180 58 / 0.55);
+  background: radial-gradient(circle at 35% 30%, #e6f8ff, var(--lamp-amber) 45%, #0a6f99);
+  box-shadow: 0 0 0 2px #20242e, 0 0 14px 3px rgb(23 195 255 / 0.55);
 }

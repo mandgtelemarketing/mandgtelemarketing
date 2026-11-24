@@ -3,9 +3,9 @@ import { FOUNDERS_VIDEO, ORIGIN_STORY } from '@/lib/site'
 /** The founders' monitor: their video when it exists, a clear "coming soon" card until then. */
 function Monitor() {
   return (
-    <div className="rounded-[18px] bg-[linear-gradient(160deg,#8f5a2e,#5e361a_55%,#3b210f)] p-3 shadow-[0_30px_60px_rgb(0_0_0/0.55)] sm:p-4">
+    <div className="rounded-[18px] bg-[linear-gradient(160deg,#1d3f68,#0f2440_55%,#071426)] p-3 shadow-[0_30px_60px_rgb(0_0_0/0.55)] sm:p-4">
       <div className="panel-inset rounded-[10px] p-2 sm:p-3">
-        <div className="relative aspect-video overflow-hidden rounded-[6px] bg-[#0b0c0b]">
+        <div className="relative aspect-video overflow-hidden rounded-[6px] bg-[#05070b]">
           {FOUNDERS_VIDEO ? (
             <video
               className="h-full w-full object-cover"
@@ -22,11 +22,11 @@ function Monitor() {
               {/* Screen glass: faint scan lines and a warm bloom */}
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgb(255_255_255/0.025)_0_1px,transparent_1px_4px),radial-gradient(70%_60%_at_50%_45%,rgb(255_180_58/0.12),transparent)]"
+                className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgb(255_255_255/0.025)_0_1px,transparent_1px_4px),radial-gradient(70%_60%_at_50%_45%,rgb(23_195_255/0.12),transparent)]"
               />
               <span
                 aria-hidden="true"
-                className="relative flex h-16 w-16 items-center justify-center rounded-full border border-brass/60 bg-[#151411] sm:h-20 sm:w-20"
+                className="relative flex h-16 w-16 items-center justify-center rounded-full border border-brass/60 bg-[#0f1218] sm:h-20 sm:w-20"
               >
                 <svg width="26" height="26" viewBox="0 0 24 24" className="ml-1 text-brass">
                   <path d="M7 4.5v15l12-7.5z" fill="currentColor" />
@@ -41,7 +41,7 @@ function Monitor() {
         </div>
       </div>
       <div className="mt-3 flex items-center justify-between px-2">
-        <span className="plate-label text-[0.7rem] text-[#f0d9b0]/80">Gino and Matt</span>
+        <span className="plate-label text-[0.7rem] text-[#c9d3e0]/80">Gino and Matt</span>
         <span className="flex gap-2" aria-hidden="true">
           <span className="lamp" data-on={FOUNDERS_VIDEO ? 'green' : 'amber'} />
           <span className="lamp" />

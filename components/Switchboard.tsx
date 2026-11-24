@@ -20,7 +20,7 @@ const PROD_X = [150, 300, 450]
 const PROD_LAMP_Y = 290
 const PROD_JACK_Y = 318
 const SHELF_Y = 412
-const CORD_COLORS = ['#b5342a', '#2f7f4c', '#a8322a']
+const CORD_COLORS = ['#1aa7dc', '#d62d5a', '#3f7fd8']
 const CYCLE = 6.2
 const CORDS = 3
 
@@ -111,7 +111,7 @@ function Plug({ p }: { p: Pt }) {
   return (
     <g transform={`translate(${p.x} ${p.y})`}>
       <rect x={-3} y={-2} width={6} height={9} rx={2} fill="url(#brassV)" />
-      <rect x={-6.5} y={6} width={13} height={19} rx={3} fill="#1b1a17" stroke="#3a362f" />
+      <rect x={-6.5} y={6} width={13} height={19} rx={3} fill="#141720" stroke="#333a48" />
       <rect x={-5.5} y={8} width={3} height={15} rx={1.5} fill="rgb(255 255 255 / 0.12)" />
     </g>
   )
@@ -131,8 +131,8 @@ function Lamp({ x, y, on, blink }: { x: number; y: number; on?: 'amber' | 'green
   const fill = on === 'green' ? 'url(#lampG)' : on === 'amber' ? 'url(#lampA)' : 'url(#lampOff)'
   return (
     <g className={blink ? 'sb-blink' : undefined}>
-      {on && <circle cx={x} cy={y} r={15} fill={on === 'green' ? 'rgb(79 214 130 / 0.22)' : 'rgb(255 180 58 / 0.25)'} filter="url(#glow)" />}
-      <circle cx={x} cy={y} r={8} fill="#2b2823" />
+      {on && <circle cx={x} cy={y} r={15} fill={on === 'green' ? 'rgb(23 195 255 / 0.22)' : 'rgb(255 51 102 / 0.28)'} filter="url(#glow)" />}
+      <circle cx={x} cy={y} r={8} fill="#20242e" />
       <circle cx={x} cy={y} r={6.5} fill={fill} />
     </g>
   )
@@ -178,46 +178,46 @@ export function Switchboard() {
     >
       <defs>
         <linearGradient id="oak" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#9a6233" />
-          <stop offset="0.5" stopColor="#6a3d1d" />
-          <stop offset="1" stopColor="#40230f" />
+          <stop offset="0" stopColor="#1f4470" />
+          <stop offset="0.5" stopColor="#122b4b" />
+          <stop offset="1" stopColor="#081628" />
         </linearGradient>
         <pattern id="grain" width="600" height="8" patternUnits="userSpaceOnUse">
           <path d="M0 2 Q150 0 300 3 T600 2" stroke="rgb(0 0 0 / 0.18)" fill="none" />
           <path d="M0 6 Q200 8 400 5 T600 6" stroke="rgb(255 255 255 / 0.05)" fill="none" />
         </pattern>
         <linearGradient id="bakelite" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#1d1b18" />
-          <stop offset="1" stopColor="#100f0d" />
+          <stop offset="0" stopColor="#10131a" />
+          <stop offset="1" stopColor="#06070a" />
         </linearGradient>
         <linearGradient id="brassH" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#f0d48a" />
-          <stop offset="0.5" stopColor="#c9a14b" />
-          <stop offset="1" stopColor="#7d5f25" />
+          <stop offset="0" stopColor="#e8eef6" />
+          <stop offset="0.5" stopColor="#aeb8c7" />
+          <stop offset="1" stopColor="#5f6a7d" />
         </linearGradient>
         <linearGradient id="brassV" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#7d5f25" />
-          <stop offset="0.45" stopColor="#f0d48a" />
-          <stop offset="1" stopColor="#8e6d2a" />
+          <stop offset="0" stopColor="#5f6a7d" />
+          <stop offset="0.45" stopColor="#e8eef6" />
+          <stop offset="1" stopColor="#6f7b8f" />
         </linearGradient>
         <radialGradient id="brassR" cx="0.38" cy="0.32" r="0.75">
-          <stop offset="0" stopColor="#f6e2a6" />
-          <stop offset="0.55" stopColor="#c9a14b" />
-          <stop offset="1" stopColor="#6e5320" />
+          <stop offset="0" stopColor="#f2f6fb" />
+          <stop offset="0.55" stopColor="#aeb8c7" />
+          <stop offset="1" stopColor="#555f70" />
         </radialGradient>
         <radialGradient id="lampOff" cx="0.35" cy="0.3" r="0.8">
-          <stop offset="0" stopColor="#4d4840" />
-          <stop offset="1" stopColor="#171614" />
+          <stop offset="0" stopColor="#3d4453" />
+          <stop offset="1" stopColor="#11141a" />
         </radialGradient>
         <radialGradient id="lampA" cx="0.35" cy="0.3" r="0.8">
-          <stop offset="0" stopColor="#fff4d6" />
-          <stop offset="0.45" stopColor="#ffb43a" />
-          <stop offset="1" stopColor="#a35d00" />
+          <stop offset="0" stopColor="#ffe3ea" />
+          <stop offset="0.45" stopColor="#ff3366" />
+          <stop offset="1" stopColor="#99173b" />
         </radialGradient>
         <radialGradient id="lampG" cx="0.35" cy="0.3" r="0.8">
-          <stop offset="0" stopColor="#e9fff1" />
-          <stop offset="0.45" stopColor="#4fd682" />
-          <stop offset="1" stopColor="#16703a" />
+          <stop offset="0" stopColor="#e6f8ff" />
+          <stop offset="0.45" stopColor="#17c3ff" />
+          <stop offset="1" stopColor="#0a6f99" />
         </radialGradient>
         <filter id="glow" x="-1" y="-1" width="3" height="3">
           <feGaussianBlur stdDeviation="5" />
@@ -238,13 +238,13 @@ export function Switchboard() {
       {/* Header plate with live status */}
       <g>
         <rect x="40" y="36" width="520" height="30" rx="4" fill="url(#brassH)" />
-        <text x="58" y="56" fill="#2a2214" fontSize="12.5" fontWeight="800" letterSpacing="2.4" fontFamily="var(--font-heading)">
+        <text x="58" y="56" fill="#0d1420" fontSize="12.5" fontWeight="800" letterSpacing="2.4" fontFamily="var(--font-heading)">
           INCOMING LEADS
         </text>
         <g transform="translate(332 44)">
-          <rect width="214" height="15" rx="2" fill="#eee5cd" />
-          <circle cx="11" cy="7.5" r="4.5" fill={board.status.tone === 'green' ? '#2fb466' : '#e08a00'} />
-          <text x="22" y="11.6" fill="#22201b" fontSize="10.5" fontWeight="700" letterSpacing="0.8" fontFamily="var(--font-heading)">
+          <rect width="214" height="15" rx="2" fill="#eef3f8" />
+          <circle cx="11" cy="7.5" r="4.5" fill={board.status.tone === 'green' ? '#17c3ff' : '#ff3366'} />
+          <text x="22" y="11.6" fill="#0b1220" fontSize="10.5" fontWeight="700" letterSpacing="0.8" fontFamily="var(--font-heading)">
             {board.status.text.toUpperCase()}
           </text>
         </g>
@@ -255,10 +255,9 @@ export function Switchboard() {
         const l = leadLamp(i)
         const j = leadJack(i)
         const waiting = board.blinking === i
-        const lit = board.litLeads.includes(i)
         return (
           <g key={i}>
-            <Lamp x={l.x} y={l.y} on={waiting || lit ? 'amber' : undefined} blink={waiting} />
+            <Lamp x={l.x} y={l.y} on={waiting ? 'amber' : undefined} blink={waiting} />
             <Jack x={j.x} y={j.y} />
           </g>
         )
@@ -266,9 +265,9 @@ export function Switchboard() {
       <g>
         {[0, 1].map((r) => (
           <g key={r}>
-            <rect x="52" y={LEAD_ROWS[r].jack + 18} width="496" height="13" rx="1.5" fill="#e6dcc2" opacity="0.92" />
+            <rect x="52" y={LEAD_ROWS[r].jack + 18} width="496" height="13" rx="1.5" fill="#dfe6ee" opacity="0.92" />
             {LEAD_X.map((x, c) => (
-              <text key={c} x={x} y={LEAD_ROWS[r].jack + 28} textAnchor="middle" fill="#3a352b" fontSize="9" fontWeight="700" fontFamily="var(--font-heading)">
+              <text key={c} x={x} y={LEAD_ROWS[r].jack + 28} textAnchor="middle" fill="#2a3445" fontSize="9" fontWeight="700" fontFamily="var(--font-heading)">
                 {r * COLS + c + 1}
               </text>
             ))}
@@ -279,22 +278,22 @@ export function Switchboard() {
       {/* Producer section */}
       <rect x="40" y="252" width="520" height="2" fill="#000" opacity="0.6" />
       <rect x="40" y="254" width="520" height="1" fill="#fff" opacity="0.05" />
-      <text x="58" y="276" fill="#c9a14b" fontSize="12" fontWeight="800" letterSpacing="2.4" fontFamily="var(--font-heading)">
+      <text x="58" y="276" fill="#aeb8c7" fontSize="12" fontWeight="800" letterSpacing="2.4" fontFamily="var(--font-heading)">
         YOUR PRODUCERS
       </text>
       {PROD_X.map((x, i) => (
         <g key={x}>
           <Lamp x={x} y={PROD_LAMP_Y} on={board.greenProds.includes(i) ? 'green' : undefined} />
           <Jack x={x} y={PROD_JACK_Y} />
-          <rect x={x - 46} y={PROD_JACK_Y + 20} width="92" height="16" rx="1.5" fill="#eee5cd" />
-          <text x={x} y={PROD_JACK_Y + 32} textAnchor="middle" fill="#22201b" fontSize="10" fontWeight="800" letterSpacing="1.4" fontFamily="var(--font-heading)">
+          <rect x={x - 46} y={PROD_JACK_Y + 20} width="92" height="16" rx="1.5" fill="#eef3f8" />
+          <text x={x} y={PROD_JACK_Y + 32} textAnchor="middle" fill="#0b1220" fontSize="10" fontWeight="800" letterSpacing="1.4" fontFamily="var(--font-heading)">
             PRODUCER {'ABC'[i]}
           </text>
         </g>
       ))}
 
       {/* Cord shelf */}
-      <rect x="18" y="384" width={W - 36} height="68" fill="#0c0b0a" />
+      <rect x="18" y="384" width={W - 36} height="68" fill="#05070a" />
       <rect x="18" y="384" width={W - 36} height="3" fill="url(#brassH)" opacity="0.8" />
 
       {/* Cords, drawn last so they hang over the panel */}
@@ -303,7 +302,7 @@ export function Switchboard() {
           const d = cordPath(c.a, c.b)
           return (
             <g key={k} filter="url(#cordShadow)">
-              <path d={d} stroke="#0a0908" strokeWidth="7.5" fill="none" strokeLinecap="round" />
+              <path d={d} stroke="#04060a" strokeWidth="7.5" fill="none" strokeLinecap="round" />
               <path d={d} stroke={c.color} strokeWidth="5" fill="none" strokeLinecap="round" />
               <path d={d} stroke="rgb(255 255 255 / 0.22)" strokeWidth="1.4" fill="none" strokeDasharray="3 4" />
               <Plug p={c.a} />

@@ -8,7 +8,7 @@ export function Hero() {
       {/* Warm light falling on the cabinet */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-[-10%] h-[620px] w-[760px] rounded-full bg-[radial-gradient(closest-side,rgb(255_180_58/0.13),transparent)]"
+        className="pointer-events-none absolute -top-40 right-[-10%] h-[620px] w-[760px] rounded-full bg-[radial-gradient(closest-side,rgb(23_195_255/0.13),transparent)]"
       />
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
         <div>

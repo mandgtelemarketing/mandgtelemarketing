@@ -5,7 +5,7 @@ import { NAV_LINKS, PORTAL_LOGIN_URL } from '@/lib/site'
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-black/60 bg-[#141311]/92 shadow-[0_8px_24px_rgb(0_0_0/0.35)] backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-black/60 bg-[#07090d]/92 shadow-[0_8px_24px_rgb(0_0_0/0.35)] backdrop-blur-md">
       <div className="mx-auto flex h-[68px] max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <a href="#top" className="flex items-center gap-3">
           <Logo size={40} />

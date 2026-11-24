@@ -10,7 +10,7 @@ export function Proof() {
           <p key={s.label} className="flex items-baseline gap-3">
             {i > 0 && <span aria-hidden="true" className="hidden h-6 w-px self-center bg-black/25 sm:block" />}
             <span className="font-display text-3xl font-black uppercase sm:text-4xl">{s.value}</span>
-            <span className="plate-label text-[#3b2f17]">{s.label}</span>
+            <span className="plate-label text-[#233044]">{s.label}</span>
           </p>
         ))}
       </div>
