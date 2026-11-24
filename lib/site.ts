@@ -45,10 +45,22 @@ export type Testimonial = {
 }
 
 /**
- * Client quotes, used with permission (customer reviews.docx, 2026-11-22).
+ * Client quotes, used with permission (customer reviews.docx, updated 2026-11-24).
+ * M&G want to lead with David Bates, Rudy Surovick and Beau Vincent (Beau pending).
  * To add one, append an entry. The layout wraps on its own.
  */
 export const TESTIMONIALS: Testimonial[] = [
+  {
+    name: 'David Bates',
+    detail: 'Agent, PA',
+    quote:
+      'Our time with M&G has been very productive. Gino and Matt are great communicators, they stay in contact about the account and critical updates. As an owner I like the weekly updates to keep our numbers top of mind for a quick review of our week. Our Sales team has great rapport with our TMs and we have recently added a second TM. We have recently added more staff to partner with M&G as we continue to grow this outstanding partnership with them. Any questions I have get answered within a few hours and we have found this service to be one of our best producing ROI marketing strategies.',
+  },
+  {
+    name: 'Rudy Surovick',
+    detail: 'Agent, GA',
+    quote: 'Best telemarketers I have used to date.',
+  },
   {
     name: "Kevin O'Rourke",
     detail: 'Oak Hill Insurance, GA',
@@ -60,11 +72,6 @@ export const TESTIMONIALS: Testimonial[] = [
     detail: 'Allstate Agent, PA',
     quote:
       'Their telemarketers are professional and well trained. M&G is a great company to work with and they helped me reach my sales goals.',
-  },
-  {
-    name: 'Rudy Surovick',
-    detail: 'Agent, GA',
-    quote: 'Best telemarketers I have used to date.',
   },
 ]
 

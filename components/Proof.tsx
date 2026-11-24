@@ -26,13 +26,13 @@ export function Proof() {
                 key={t.name}
                 data-reveal
                 style={{ transitionDelay: `${i * 90}ms` }}
-                className={`ivory flex flex-col rounded-[4px] ${i === 0 ? 'md:col-span-2 lg:col-span-1 lg:row-span-2 lg:[&_blockquote]:text-[1.5rem]' : ''}`}
+                className={`ivory flex flex-col rounded-[4px] ${i === 0 ? 'md:col-span-2 lg:col-span-1 lg:row-span-2' : ''} ${i > 0 && i === TESTIMONIALS.length - 1 && TESTIMONIALS.length % 2 === 0 ? 'md:col-span-2' : ''}`}
               >
                 <div className="flex items-center justify-between border-b border-black/10 px-6 py-3">
                   <span className="plate-label text-[0.72rem] text-ivory-muted">Line {String(i + 1).padStart(2, '0')}</span>
                   <span className="lamp" data-on="green" aria-hidden="true" />
                 </div>
-                <blockquote className={`flex-1 px-6 pt-5 ${i === 0 ? 'text-xl leading-relaxed lg:text-[1.35rem]' : 'text-[1.05rem]'}`}>
+                <blockquote className={`flex-1 px-6 pt-5 ${i === 0 ? 'text-lg leading-relaxed lg:text-[1.2rem]' : 'text-[1.05rem]'}`}>
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="px-6 pb-6 pt-5">
